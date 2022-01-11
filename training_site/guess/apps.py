@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class GuessTheNumberConfig(AppConfig):
+class GuessConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'guess_the_number'
+    name = 'guess'
