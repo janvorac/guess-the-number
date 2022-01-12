@@ -5,10 +5,16 @@
     <title>Guess the number!</title>
 </head>
 <body>
+<form action="get">
+    <button
+        type="submit"
+        name="new_game_btn">New Game
+    </button>
+</form>
 {% if games %}
     <ul>
         {% for game in games %}
-            <li><a href="{% url 'guess:detail' game.id %}">{{ game.date }}</li>
+            <li><a href="{% url 'guess:detail' game.id %}">{{ game.last_played_date }}</li>
         {% endfor %}
     </ul>
 {% else %}

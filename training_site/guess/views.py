@@ -11,4 +11,9 @@ class IndexView(generic.ListView):
     context_object_name = 'games'
 
     def get_queryset(self):
-        return Game.objects.filter(date__lte=timezone.now()).order_by('-date')[:5]
+        return Game.objects.filter(last_played_date__lte=timezone.now()).order_by('-last_played_date')[:5]
+
+
+def new_game(request):
+    new_game = Game()
+    return

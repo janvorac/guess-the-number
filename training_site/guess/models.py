@@ -4,10 +4,10 @@ from django.db import models
 
 
 class Game(models.Model):
-    date = models.DateField('played on')
+    last_played_date = models.DateField('played on')
 
     def __str__(self):
-        return f'played on {self.date}'
+        return f'played on {self.last_played_date}'
 
 
 class Guessed(models.Model):
