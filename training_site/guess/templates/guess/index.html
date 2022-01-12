@@ -5,6 +5,14 @@
     <title>Guess the number!</title>
 </head>
 <body>
-
+{% if games %}
+    <ul>
+        {% for game in games %}
+            <li><a href="{% url 'guess:detail' game.id %}">{{ game.date }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No games available yet. Start playing!</p>
+{% endif %}
 </body>
 </html>
