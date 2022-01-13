@@ -1,4 +1,6 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
 from django.utils import timezone
 from django.views import generic
 from .models import Game, Guessed
@@ -14,6 +16,13 @@ class IndexView(generic.ListView):
         return Game.objects.filter(last_played_date__lte=timezone.now()).order_by('-last_played_date')[:5]
 
 
+class GameView(generic.DetailView):
+    model = Game
+    template_name = 'guess/game.html'
+
+
 def new_game(request):
-    new_game = Game()
-    return
+    ng = Game(last_played_date=timezone.now())
+    ng.save()
+    return HttpResponseRedirect(reverse('guess:detail', args=(ng.id,)))
+

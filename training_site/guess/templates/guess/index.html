@@ -5,7 +5,8 @@
     <title>Guess the number!</title>
 </head>
 <body>
-<form action="get">
+<form action="{% url 'guess:new_game' %}" method="post">
+    {% csrf_token %}
     <button
         type="submit"
         name="new_game_btn">New Game
