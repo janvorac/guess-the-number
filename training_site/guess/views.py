@@ -26,3 +26,12 @@ def new_game(request):
     ng.save()
     return HttpResponseRedirect(reverse('guess:detail', args=(ng.id,)))
 
+
+def new_guess(request, game_id):
+    guessed_num = request.POST['num_guessed']
+    if guessed_num:
+        guessed = Guessed(game_id=game_id, number=guessed_num)
+        guessed.save()
+    return HttpResponseRedirect(reverse('guess:detail', args=(game_id,)))
+
+

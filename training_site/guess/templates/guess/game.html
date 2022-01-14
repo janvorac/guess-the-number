@@ -7,9 +7,13 @@
 <body>
 <h1>{{ game.last_played_date }}</h1>
 
-<ul>
-{% for num in game.guessed_set.all %}
-    <li>{{ num.number }}</li>>
+<form action="{% url 'guess:new_guess' game.id  %}" method="post">
+    {% csrf_token %}
+    <label for="num_guessed">Guess an integral number between 0 and 100:</label>
+    <input type="number" name="num_guessed" id="num_guessed" min="0" max="100" value="50">
+    <ul>
+{% for num_guessed in game.guessed_set.all %}
+    <li>{{ num_guessed.number }}</li>
 {% endfor %}
 </ul>
 </body>
