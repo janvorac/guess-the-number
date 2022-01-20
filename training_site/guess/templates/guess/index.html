@@ -15,7 +15,7 @@
 {% if games %}
     <ul>
         {% for game in games %}
-            <li><a href="{% url 'guess:detail' game.id %}">{{ game.last_played_date }}</li>
+            <li><a href="{% url 'guess:detail' game.id %}">{{ game.last_played_date }}</a>></li>
         {% endfor %}
     </ul>
 {% else %}
