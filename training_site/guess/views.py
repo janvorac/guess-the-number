@@ -31,6 +31,7 @@ def new_game(request):
 
 def new_guess(request, game_id):
     guessed_num = request.POST['num_guessed']
+    guess_feedback = ''
     if guessed_num:
         guessed_num = int(guessed_num)
         guessed = Guessed(game_id=game_id, number=guessed_num)
@@ -40,6 +41,11 @@ def new_guess(request, game_id):
             current_game.finished = True
             current_game.save()
             return HttpResponseRedirect(reverse('guess:index'))  # todo: there should be a better redirect
+        elif guessed_num < current_game.correct_number:
+            guess_feedback = 'Too low! Shoot higher.'
+        elif guessed_num > current_game.correct_number:
+            guess_feedback = 'Too high! Shoot lower.'
+        # todo: find out how to pass guess_feedback to game.html
     return HttpResponseRedirect(reverse('guess:detail', args=(game_id,)))
 
 
