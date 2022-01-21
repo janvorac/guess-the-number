@@ -1,7 +1,8 @@
-from random import random
+import random
 
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
+from django.template import loader
 from django.urls import reverse
 from django.utils import timezone
 from django.views import generic
@@ -46,6 +47,6 @@ def new_guess(request, game_id):
         elif guessed_num > current_game.correct_number:
             guess_feedback = 'Too high! Shoot lower.'
         # todo: find out how to pass guess_feedback to game.html
-    return HttpResponseRedirect(reverse('guess:detail', args=(game_id,)))
+    return render(request, 'guess/game.html', context={'guess_feedback': guess_feedback, 'game': current_game})
 
 

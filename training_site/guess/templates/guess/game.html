@@ -11,7 +11,12 @@
     {% csrf_token %}
     <label for="num_guessed">Guess an integral number between 0 and 100:</label>
     <input type="number" name="num_guessed" id="num_guessed" min="0" max="100" value="50">
-    <ul>
+</form>
+
+<p> {{ guess_feedback }} </p>
+
+<ul>
+
 {% for num_guessed in game.guessed_set.all %}
     <li>{{ num_guessed.number }}</li>
 {% endfor %}
