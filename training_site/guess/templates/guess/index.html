@@ -5,11 +5,14 @@
     <title>Guess the number!</title>
 </head>
 <body>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'guess/style.css' %}">
+
 <form action="{% url 'guess:new_game' %}" method="post">
     {% csrf_token %}
     <button
-        type="submit"
-        name="new_game_btn">New Game
+            type="submit"
+            name="new_game_btn">New Game
     </button>
 </form>
 {% if games %}
