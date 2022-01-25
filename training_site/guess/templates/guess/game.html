@@ -11,15 +11,18 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'guess/style.css' %}">
 
-<h1>{{ game.last_played_date }}</h1>
+<h1 class="centered-text">{{ game.last_played_date }}</h1>
 
 <form action="{% url 'guess:new_guess' game.id %}" method="post">
     {% csrf_token %}
-{#    <label for="num_guessed">Guess an integral number between 0 and 100:</label>#}
-    <input type="number" name="num_guessed" id="num_guessed" min="0" max="100" placeholder="guess" class="guess-num">
+    {#    <label for="num_guessed">Guess an integral number between 0 and 100:</label>#}
+    <div class="input-container">
+        <input type="number" name="num_guessed" id="num_guessed" min="0" max="100" placeholder="guess"
+               class="guess-num">
+    </div>
 </form>
 
-<p> {{ guess_feedback }} </p>
+<p class="centered-text"> {{ guess_feedback }} </p>
 
 <ul>
 

@@ -13,10 +13,10 @@ ul {
     font-style: normal;
     font-weight: normal;
     font-size: 35px;
-    margin: 12px 0;
+    margin: 12px auto;
     padding: 5px 0;
     width: 200px;
-    height: 45px;
+    height: 45px
 }
 
 li {
@@ -32,4 +32,19 @@ input {
     height: 45px;
     border: 0;
     text-align: center;
+    margin: 12px auto;
+}
+
+.input-container {
+    width: 200px;
+    margin: 12px auto;
+}
+
+.centered-text {
+    width: 200px;
+    margin: 10px auto;
+}
+
+h1 {
+    font-size: 30px;
 }
