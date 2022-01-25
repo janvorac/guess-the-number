@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ribeye+Marrow&display=swap" rel="stylesheet">
     <title>Game</title>
 </head>
 <body>
@@ -12,8 +15,8 @@
 
 <form action="{% url 'guess:new_guess' game.id %}" method="post">
     {% csrf_token %}
-    <label for="num_guessed">Guess an integral number between 0 and 100:</label>
-    <input type="number" name="num_guessed" id="num_guessed" min="0" max="100" value="50">
+{#    <label for="num_guessed">Guess an integral number between 0 and 100:</label>#}
+    <input type="number" name="num_guessed" id="num_guessed" min="0" max="100" placeholder="guess" class="guess-num">
 </form>
 
 <p> {{ guess_feedback }} </p>
@@ -21,7 +24,7 @@
 <ul>
 
     {% for num_guessed in game.guessed_set.all %}
-        <li>{{ num_guessed.number }}</li>
+        <li class="guess-num">{{ num_guessed.number }}</li>
     {% endfor %}
 </ul>
 </body>
