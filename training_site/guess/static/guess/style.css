@@ -1,4 +1,50 @@
+body {
+    background: #D3F6D1;
+    font-family: Ribeye Marrow, fantasy;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+.guess-num {
+    font-family: Ribeye Marrow, monospace;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 35px;
+    margin: 12px auto;
+    padding: 5px 0;
+    width: 200px;
+    height: 45px
+}
+
 li {
-    font-family: Bahnschrift;
-    font-size: large;
+    text-align: center;
+    list-style-type: none;
+    background: #5C8D89;
+    color: white;
+}
+
+input {
+    background: #A7D7C5;
+    width: 200px;
+    height: 45px;
+    border: 0;
+    text-align: center;
+    margin: 12px auto;
+}
+
+.input-container {
+    width: 200px;
+    margin: 12px auto;
+}
+
+.centered-text {
+    width: 200px;
+    margin: 10px auto;
+}
+
+h1 {
+    font-size: 30px;
 }
