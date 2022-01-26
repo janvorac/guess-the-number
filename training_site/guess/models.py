@@ -14,6 +14,9 @@ class Game(models.Model):
             ret += ' (finished)'
         return ret
 
+    def ordered_guess_set(self):
+        return self.guessed_set.all().order_by('-id')
+
 
 class Guessed(models.Model):
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
@@ -21,3 +24,5 @@ class Guessed(models.Model):
 
     def __str__(self):
         return str(self.number)
+
+
