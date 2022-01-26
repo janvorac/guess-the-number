@@ -26,7 +26,7 @@
 
 <ul>
 
-    {% for num_guessed in game.guessed_set.all %}
+    {% for num_guessed in game.ordered_guess_set %}
         <li class="guess-num">{{ num_guessed.number }}</li>
     {% endfor %}
 </ul>
