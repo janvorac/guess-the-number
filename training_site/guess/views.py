@@ -2,7 +2,6 @@ import random
 
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
-from django.template import loader
 from django.urls import reverse
 from django.utils import timezone
 from django.views import generic
@@ -18,11 +17,21 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         return Game.objects.filter(last_played_date__lte=timezone.now()).order_by('-last_played_date')[:5]
 
+    def get_context_data(self, *args, **kwargs):
+        context = super(IndexView, self).get_context_data(*args, *kwargs)
+        context['finished_games'] = Game.objects.filter(finished=True).order_by('-last_played_date')
+        context['unfinished_games'] = Game.objects.filter(finished=False).order_by('-last_played_date')
+        return context
+
 
 class GameView(generic.DetailView):
     model = Game
     template_name = 'guess/game.html'
 
+
+class InspectView(generic.DetailView):
+    model = Game
+    template_name = 'guess/inspect.html'
 
 def new_game(request):
     ng = Game(last_played_date=timezone.now(), correct_number=random.randint(0, 100))

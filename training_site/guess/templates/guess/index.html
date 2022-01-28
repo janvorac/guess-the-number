@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Guess the number!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ribeye+Marrow&display=swap" rel="stylesheet">
 </head>
 <body>
 {% load static %}
@@ -15,14 +18,30 @@
             name="new_game_btn">New Game
     </button>
 </form>
-{% if games %}
+
+<div class="game-names-container">
+{% if unfinished_games %}
     <ul>
-        {% for game in games %}
-            <li><a href="{% url 'guess:detail' game.id %}">{{ game.last_played_date }}</a></li>
+        {% for unfinished_game in unfinished_games %}
+            <li><a href="{% url 'guess:detail' unfinished_game.id %}">{{ unfinished_game.last_played_date }}</a></li>
         {% endfor %}
     </ul>
 {% else %}
-    <p>No games available yet. Start playing!</p>
+    <p>No unfinished games available. Start playing!</p>
 {% endif %}
+</div>
+<div class="game-names-container">
+{% if finished_games %}
+    <ul>
+        {% for finished_game in finished_games %}
+            <li><a href="{% url 'guess:inspect' finished_game.id %}">{{ finished_game.last_played_date }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No finished games available. You must guess that number!</p>
+</div>
+{% endif %}
+
+
 </body>
 </html>

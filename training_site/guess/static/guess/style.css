@@ -48,3 +48,8 @@ input {
 h1 {
     font-size: 30px;
 }
+
+.game-names-container {
+    margin: 50px;
+    width: 200px;
+}
