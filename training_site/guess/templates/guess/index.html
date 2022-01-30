@@ -20,6 +20,7 @@
 </form>
 
 <div class="game-names-container">
+<h3>Games to play</h3>
 {% if unfinished_games %}
     <ul>
         {% for unfinished_game in unfinished_games %}
@@ -31,6 +32,7 @@
 {% endif %}
 </div>
 <div class="game-names-container">
+<h3>Finished games</h3>
 {% if finished_games %}
     <ul>
         {% for finished_game in finished_games %}

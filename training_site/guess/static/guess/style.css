@@ -52,4 +52,6 @@ h1 {
 .game-names-container {
     margin: 50px;
     width: 200px;
+    float: left;
+    height: 500px;
 }
