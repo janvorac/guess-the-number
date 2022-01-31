@@ -18,7 +18,7 @@
     {#    <label for="num_guessed">Guess an integral number between 0 and 100:</label>#}
     <div class="input-container">
         <input type="number" name="num_guessed" id="num_guessed" min="0" max="100" placeholder="guess"
-               class="guess-num">
+               class="game-detail box">
     </div>
 </form>
 
@@ -27,7 +27,7 @@
 <ul>
 
     {% for num_guessed in game.ordered_guess_set %}
-        <li class="guess-num">{{ num_guessed.number }}</li>
+        <li class="game-detail box">{{ num_guessed.number }}</li>
     {% endfor %}
 </ul>
 </body>
