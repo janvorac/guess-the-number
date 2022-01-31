@@ -1,3 +1,4 @@
 .env
 venv
 training_site/db.sqlite3
+.idea
