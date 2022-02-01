@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <title>Game details</title>
 </head>
-<body>
+<body class="with-plot">
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'guess/style.css' %}">
 
+<nav>
+    <a class="with-plot" href="{% url 'guess:index' %}">←</a>
+</nav>
 {% if plot %}
 <div class="plot">{{ plot|safe }}</div>
 {% endif %}

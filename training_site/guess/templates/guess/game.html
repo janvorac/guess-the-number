@@ -11,6 +11,10 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'guess/style.css' %}">
 
+<nav>
+    <a class="game-detail" href="{% url 'guess:index' %}">←</a>
+</nav>
+
 <h1 class="centered-text">{{ game.last_played_date }}</h1>
 
 <form action="{% url 'guess:new_guess' game.id %}" method="post">
