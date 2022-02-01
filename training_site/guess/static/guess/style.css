@@ -77,6 +77,11 @@ li.index {
     font-size: 35px;
 }
 
+.message {
+    color: #D3F6D1;
+    font-size: 35px;
+}
+
 a.index{
     color: #D3F6D1;
     font-style: normal;

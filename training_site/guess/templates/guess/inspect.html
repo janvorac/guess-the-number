@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>How you played</title>
+    <title>Game details</title>
 </head>
 <body>
 
+{% if plot %}
+<div class="plot">{{ plot|safe }}</div>
+{% endif %}
 </body>
 </html>
