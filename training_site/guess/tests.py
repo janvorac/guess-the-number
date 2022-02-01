@@ -9,8 +9,9 @@ class GamesIndexViewTests(django.test.TestCase):
     def test_no_games(self):
         response = self.client.get(reverse('guess:index'))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "No unfinished games available. Start playing!")
-        self.assertContains(response, "No finished games available. You must guess that number!")
+
+        self.assertContains(response, "No open games available. Start playing!")
+        self.assertContains(response, "No closed games available. You must guess that number!")
 
     def test_one_unfinished_game(self):
         game = Game.objects.create(last_played_date=timezone.now(), correct_number=50)
