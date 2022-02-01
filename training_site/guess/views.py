@@ -58,6 +58,7 @@ class InspectView(generic.DetailView):
             ys=[int(guessed.number) for guessed in game.guessed_set.all()],
             correct=game.correct_number,
         ).to_html()
+
         return context
 
 
@@ -79,13 +80,13 @@ def new_guess(request, game_id):
             current_game.finished = True
             current_game.save()
             return HttpResponseRedirect(
-                reverse('guess:index')
-            )  # todo: there should be a better redirect
+                reverse('guess:inspect', args=(current_game.id,))
+            )
         elif guessed_num < current_game.correct_number:
             guess_feedback = 'Too low! Shoot higher.'
         elif guessed_num > current_game.correct_number:
             guess_feedback = 'Too high! Shoot lower.'
-        # todo: find out how to pass guess_feedback to game.html
+
     return render(
         request,
         'guess/game.html',
