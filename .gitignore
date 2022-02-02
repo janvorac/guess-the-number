@@ -2,3 +2,4 @@
 venv
 training_site/db.sqlite3
 .idea
+training_site/settings_prod.py
