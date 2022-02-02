@@ -9,9 +9,7 @@ class Game(models.Model):
     finished = models.BooleanField(default=False)
 
     def __str__(self):
-        ret = f'played on {self.last_played_date}'
-        if self.finished:
-            ret += ' (finished)'
+        ret = f'Game {self.id} ({self.last_played_date})'
         return ret
 
     def ordered_guess_set(self):

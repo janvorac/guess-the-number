@@ -25,7 +25,7 @@ class IndexView(generic.ListView):
         context = super(IndexView, self).get_context_data(*args, *kwargs)
         context['finished_games'] = Game.objects.filter(finished=True).order_by(
             '-last_played_date'
-        )
+        )[:8]
         context['unfinished_games'] = Game.objects.filter(finished=False).order_by(
             '-last_played_date'
         )
@@ -41,7 +41,8 @@ class InspectView(generic.DetailView):
     model = Game
     template_name = 'guess/inspect.html'
 
-    def create_plot(self, ys, correct):
+    @staticmethod
+    def create_plot(ys, correct):
         trace = go.Scatter(y=ys, name='guesses')
         layout = go.Layout(
             title='Guess history', xaxis={'title': 'round'}, yaxis={'title': 'Guessed number'}
@@ -63,7 +64,7 @@ class InspectView(generic.DetailView):
 
 
 def new_game(request):
-    ng = Game(last_played_date=timezone.now(), correct_number=random.randint(0, 100))
+    ng = Game(last_played_date=timezone.now().date(), correct_number=random.randint(0, 100))
     ng.save()
     return HttpResponseRedirect(reverse('guess:detail', args=(ng.id,)))
 
@@ -76,6 +77,7 @@ def new_guess(request, game_id):
         guessed = Guessed(game_id=game_id, number=guessed_num)
         guessed.save()
         current_game = get_object_or_404(Game, pk=game_id)
+        current_game.last_played_date = timezone.now().date()
         if guessed_num == current_game.correct_number:
             current_game.finished = True
             current_game.save()
