@@ -29,4 +29,6 @@ jobs:
       env:
         secret_key: ${{secrets.SECRET_KEY}}
       run: |
+        echo $SECRET_KEY
+        echo $secret_key
         python training_site/manage.py test
