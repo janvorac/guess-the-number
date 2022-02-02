@@ -65,7 +65,7 @@ h1 {
 
 .game-names-container {
     margin: 50px;
-    width: 300px;
+    width: 350px;
     float: left;
     height: 500px;
     padding: 20px;
@@ -80,7 +80,7 @@ h3.index{
 }
 
 li.index {
-    font-size: 35px;
+    font-size: 30px;
 }
 
 .message {
