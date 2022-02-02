@@ -8,6 +8,10 @@ ul {
     margin: 0;
 }
 
+li {
+    list-style-type: none;
+}
+
 .box {
     border-radius: 8px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -24,8 +28,10 @@ ul {
     height: 45px
 }
 
-li {
-    list-style-type: none;
+a.game-detail {
+    text-decoration: none;
+    font-size: 40px;
+    color: #5C8D89;
 }
 
 li.game-detail {
@@ -98,4 +104,14 @@ button.index {
     font-size: 40px;
     color: #FFFFFF;
     margin: 0px 50px;
+}
+
+body.with-plot {
+    background: #FFFFFF;
+}
+
+a.with-plot {
+    color: black;
+    text-decoration: none;
+    font-size: 40px;
 }
